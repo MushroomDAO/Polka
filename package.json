@@ -1,0 +1,77 @@
+{
+	"name": "polka",
+	"version": "0.0.1",
+	"license": "MIT",
+	"bin": "dist/cli.js",
+	"engines": {
+		"node": ">=10"
+	},
+	"scripts": {
+		"build": "tsc && chmod +x dist/cli.js",
+		"start": "npm run build && dist/cli.js",
+		"pretest": "npm run build",
+		"test": "xo && ava"
+	},
+	"files": [
+		"dist/cli.js"
+	],
+	"dependencies": {
+		"bittorrent-dht": "^10.0.2",
+		"buffer-from": "^1.1.2",
+		"color-hash": "^2.0.1",
+		"connections": "^1.4.2",
+		"crypto": "^1.0.1",
+		"dns-discovery": "^6.2.3",
+		"ink": "^3.2.0",
+		"ink-big-text": "^1.2.0",
+		"ink-gradient": "^2.0.0",
+		"ink-spinner": "^4.0.3",
+		"ink-table": "^3.0.0",
+		"ink-text-input": "^4.0.3",
+		"length-prefixed-message": "^3.0.4",
+		"meow": "^9.0.0",
+		"moment": "^2.29.1",
+		"net": "^1.0.2",
+		"pretty-hash": "^1.0.1",
+		"pubsub-swarm": "^1.0.0",
+		"pumpify": "^2.0.1",
+		"react": "^17.0.2",
+		"split": "^1.0.1",
+		"ssb-keys": "^8.2.0",
+		"thunky": "^1.1.0",
+		"to-buffer": "^1.1.1"
+	},
+	"ava": {
+		"typescript": {
+			"extensions": [
+				"tsx"
+			],
+			"rewritePaths": {
+				"source/": "dist/"
+			}
+		}
+	},
+	"xo": {
+		"extends": "xo-react",
+		"rules": {
+			"react/prop-types": "off"
+		}
+	},
+	"devDependencies": {
+		"@ava/typescript": "^3.0.1",
+		"@sindresorhus/tsconfig": "^2.0.0",
+		"@types/jest": "^27.4.1",
+		"@types/react": "^17.0.39",
+		"ava": "^4.0.1",
+		"chalk": "^5.0.0",
+		"eslint-config-xo-react": "^0.26.0",
+		"eslint-plugin-react": "^7.29.2",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"ink-testing-library": "^2.1.0",
+		"jest": "^27.5.1",
+		"prettier": "^2.5.1",
+		"ts-jest": "^27.1.3",
+		"typescript": "^4.5.5",
+		"xo": "^0.39.1"
+	}
+}
