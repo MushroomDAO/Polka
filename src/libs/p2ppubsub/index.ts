@@ -1,6 +1,6 @@
 import LOGBRO from "../logger";
-// import pubsub from "./pubsub";
-import pubsub from "pubsub-swarm";
+import pubsub from "./pubsub";
+// import pubsub from "pubsub-swarm";
 
 interface Message {
 	contentHash: string;

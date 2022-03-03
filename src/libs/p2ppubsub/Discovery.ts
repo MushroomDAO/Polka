@@ -25,6 +25,7 @@ function Discovery(opts) {
 		this.dns.on("warn", onwarn);
 	}
 	if (this.dht) {
+		console.log("init dht");
 		this.dht.on("peer", ondhtpeer);
 		this.dht.on("error", onerror);
 		this.dht.on("warn", onwarn);
