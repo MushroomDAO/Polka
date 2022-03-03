@@ -61,6 +61,7 @@ function Discovery(opts) {
 	}
 
 	function ondhtpeer(peer, infoHash, via) {
+		console.log("on dht peer", peer);
 		if (self.destroyed) return;
 		var id = self._unhash[infoHash.toString("hex")];
 		if (via)
@@ -219,7 +220,11 @@ Discovery.prototype.join = function (id, port, opts, cb) {
 	}
 
 	function dht() {
-		debug("chan=%s dht %s", prettyHash(id), announcing ? "announce" : "lookup");
+		console.log(
+			"chan=%s dht %s",
+			prettyHash(id),
+			announcing ? "announce" : "lookup"
+		);
 		if (announcing) self.dht.announce(hash, publicPort || port, queryDone);
 		else self.dht.lookup(hash, queryDone);
 		dhtTimeout = setTimeout(
