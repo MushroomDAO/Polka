@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const LOGGING_ENABLED = false;
+const LOGGING_ENABLED = true;
 const LOGBRO = (...message) => {
     if (!LOGGING_ENABLED)
         return;
