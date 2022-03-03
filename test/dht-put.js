@@ -16,6 +16,6 @@ const value = Buffer.alloc(200).fill('test message')
 
 dht.put({ v: value }, function (err, hash) {
   console.error('error=', err)
-  console.log('hash=', hash)
+  console.log('hash=', hash.toString())
 })
 
