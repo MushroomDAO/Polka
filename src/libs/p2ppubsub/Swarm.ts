@@ -128,10 +128,11 @@ Swarm.prototype.__defineGetter__("connected", function () {
 });
 
 Swarm.prototype.join = function (name, opts, cb) {
+	console.log("joining something ", name.toString());
 	if (typeof opts === "function") return this.join(name, {}, opts);
 	name = toBuffer(name);
 	if (!opts) opts = {};
-	if (typeof opts.announce === "undefined") opts.announce = true;
+	opts.announce = true;
 
 	if (!this._listening && !this._adding) this._listenNext();
 
