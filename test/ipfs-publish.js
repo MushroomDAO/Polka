@@ -9,6 +9,7 @@ async function pub() {
   const ipfs = await IPFS.create()
   // await ipfs.pubsub.subscribe(topic, receiveMsg)
   await ipfs.pubsub.publish(topic, msg)
+  console.log("publish")
 }
 
 pub()

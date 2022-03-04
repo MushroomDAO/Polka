@@ -7,6 +7,9 @@ async function sub() {
   const ipfs = await IPFS.create()
   await ipfs.pubsub.subscribe(topic, receiveMsg)
   console.log(`subscribed to ${topic}`)
+
+  const peerIds = await ipfs.pubsub.peers(topic)
+  console.log("PEER IDS", peerIds)
 }
 
 sub()
