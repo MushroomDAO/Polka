@@ -7,7 +7,8 @@ import React, {
 	useState,
 } from "react";
 
-import PubSub from "../../libs/p2ppubsub";
+// import PubSub from "../../libs/p2ppubsub";
+import PubSub from "../../libs/p2p";
 
 const pubsub = new PubSub();
 
@@ -44,8 +45,8 @@ export const PubsubProvider = ({ children }: any) => {
 	const onPublish = (frequency: string, message: string) => {
 		LOGBRO("[PubsubProvider] Publish: ", message);
 		const data = pubsub.publish(frequency, message);
-		LOGBRO("data", data);
-		onNewMessage(data, frequency);
+		// LOGBRO("data", data);
+		// onNewMessage(data, frequency);
 		return null;
 	};
 
@@ -80,13 +81,21 @@ export const PubsubProvider = ({ children }: any) => {
 		});
 	};
 
-	const onListen = (frequency: string) => {
+	const onListen = async (frequency: string) => {
 		LOGBRO("[PubsubProvider] Listen: ", frequency);
-		const swarm: any = pubsub.subscribe(frequency);
+		await pubsub.subscribe(frequency, (frequency, data) => {
+			console.log("data");
+			onNewMessage(JSON.parse(data), frequency);
+		});
 		// LOGBRO("swarm", swarm);
-		swarm.on("message", (message) => onNewMessage(message, frequency));
-		swarm.on("connected", (connection) => onNewConnection(frequency));
-		swarm.on("connection-closed", () => onConnectionClosed(frequency));
+		// swarm.on("connection", (conn, info) => {
+		// swarm.on("data", (data) =>
+		// 	console.log("client got message:", data.toString())
+		// );
+		// });
+		// swarm.on("message", (message) => onNewMessage(message, frequency));
+		// swarm.on("connected", (connection) => onNewConnection(frequency));
+		// swarm.on("connection-closed", () => onConnectionClosed(frequency));
 	};
 
 	LOGBRO("MESSAGES", JSON.stringify(messages), 2);

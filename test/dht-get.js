@@ -1,9 +1,9 @@
 const DHT = require('bittorrent-dht')
 const dht = new DHT()
 
-const hash = 'hash'
+const hash = 'a9fc325dc29461764a490e7fdb127ae82ef4bdb8'
 
-dht.listen(20000, function () {
+dht.listen(20001, function () {
   console.log('now listening')
 })
 
@@ -13,5 +13,10 @@ dht.on('peer', function (peer, infoHash, from) {
 
 
 dht.get(hash, function (err, res) {
-  console.log("RES", res.v.toString())
+  console.log("err", err)
+  if (res && res.v) {
+    console.log('Value', res.v.toString())
+  } else {
+    console.log('HUH', res)
+  }
 })

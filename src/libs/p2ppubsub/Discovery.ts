@@ -25,7 +25,6 @@ function Discovery(opts) {
 		this.dns.on("warn", onwarn);
 	}
 	if (this.dht) {
-		console.log("init dht");
 		this.dht.on("peer", ondhtpeer);
 		this.dht.on("error", onerror);
 		this.dht.on("warn", onwarn);
@@ -62,7 +61,6 @@ function Discovery(opts) {
 	}
 
 	function ondhtpeer(peer, infoHash, via) {
-		console.log("on dht peer", peer);
 		if (self.destroyed) return;
 		var id = self._unhash[infoHash.toString("hex")];
 		if (via)
